@@ -1,0 +1,264 @@
+openapi: 3.0.0
+info:
+  title: "WRL Flask REST API"
+  description: "An API for the Work Related Learning App"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+components:
+  schemas:
+    Student:
+      type: "object"
+      required:
+        - regNo
+      properties:
+        fname:
+          type: "string"
+        lname:
+          type: "string"
+        regNo:
+          type: "string"
+        DOE:
+          type: "string"
+        st_email:
+          type: "string"
+        phoneNo:
+          type: "string"
+        level:
+          type: "string"
+        department:
+          type: "string"
+        program:
+          type: "string"
+        company:
+          type: "string"
+        com_city:
+          type: "string"
+        com_email:
+          type: "string"
+        com_phone:
+          type: "string"
+    Scheduling:
+      type: "object"
+      required:
+        - schdl_date
+        - schdle_city
+      properties:
+        schdl_date:
+          type: "string"
+          format: "date"
+        schdle_city:
+          type: "string"
+        transport:
+          type: "string"
+        studentlist:
+          type: "string"
+  parameters:
+    regNo:
+      name: "regNo"
+      description: "Registration number of the student to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+    accessment_id:
+      name: "accessment_id"
+      description: "ID of the accessment"
+      in: path
+      required: true
+      schema:
+        type: "integer"
+
+    schedule_id:
+      name: "schedule_id"
+      description: "ID of the schedule to get"
+      in: path
+      required: True
+      schema:
+        type: "integer"
+paths:
+  /students:
+    get:
+      operationId: "students.read_all"
+      tags:
+        - "Students"
+      summary: "Read the list of students"
+      responses:
+        "200":
+          description: "Successfully read students list"
+
+    post:
+      operationId: "students.create"
+      tags:
+        - Students
+      summary: "Create a student"
+      requestBody:
+        description: "Student to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "student"
+              $ref: "#/components/schemas/Student"
+      responses:
+        "201":
+          description: "Successfully created student"
+
+  /students/{regNo}:
+    get:
+      operationId: "students.read_one"
+      tags:
+        - Students
+      summary: "Read one student"
+      parameters:
+        - $ref: "#/components/parameters/regNo"
+      responses:
+        "200":
+          description: "Successfully read student"
+    put:
+      tags:
+        - Students
+      operationId: "students.update"
+      summary: "Update a student"
+      parameters:
+        - $ref: "#/components/parameters/regNo"
+      responses:
+        "200":
+          description: "Successfully updated student"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "student"
+              $ref: "#/components/schemas/Student"
+    delete:
+      tags:
+        - Students
+      operationId: "students.delete"
+      summary: "Delete a student"
+      parameters:
+        - $ref: "#/components/parameters/regNo"
+      responses:
+        "204":
+          description: "Successfully deleted student"
+
+  /accessments:
+    post:
+      operationId: "accessments.create"
+      tags:
+        - Accessments
+      summary: "Create a note associated with a student"
+      requestBody:
+        description: "Accessment to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "accessment"
+              type: "object"
+              properties:
+                student_id:
+                  type: "integer"
+                acsmntDate:
+                  type: "string"
+                acsr_fname:
+                  type: "string"
+                acsr_lname:
+                  type: "string"
+                acsr_staffID:
+                  type: "string"
+                acsr_phone:
+                  type: "string"
+                acsr_email:
+                  type: "string"
+                comment:
+                  type: "string"
+                timestamp:
+                  type: "string"
+
+      responses:
+        "201":
+          description: "Successfully created an accessment"
+
+
+  /accessments/{accessment_id}:
+    get:
+      operationId: "accessments.read_one"
+      tags:
+        - Accessments
+      summary: "Read one accessment"
+      parameters:
+        - $ref: "#/components/parameters/accessment_id"
+      responses:
+        "200":
+          description: "Successfully read one accessment"
+    put:
+      tags:
+        - Accessments
+      operationId: "accessments.update"
+      summary: "Update an accessment"
+      parameters:
+        - $ref: "#/components/parameters/accessment_id"
+      responses:
+        "200":
+          description: "Successfully updated accessment"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "accessment"
+              type: "object"
+              properties:
+                content:
+                  type: "string"
+    delete:
+      tags:
+        - Accessments
+      operationId: "accessments.delete"
+      summary: "Delete an accessment"
+      parameters:
+        - $ref: "#/components/parameters/accessment_id"
+      responses:
+        "204":
+          description: "Successfully deleted accessment"
+
+  /schedules:
+    get:
+      operationId: "scheduling.read_schedules"
+      tags:
+        - Scheduling
+      summary: "Read all schedules"
+      responses:
+        "200":
+          description: "Successfully read schedules"
+
+    post:
+      operationId: "scheduling.create_schedule"
+      tags:
+        - Scheduling
+      summary: "Create a new schedule"
+      requestBody:
+        description: "Scheduling data to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "scheduling_data"
+              $ref: "#/components/schemas/Scheduling"
+      responses:
+        "201":
+          description: "Successfully created schedule"
+
+  /schedules/{schedule_id}:
+    get:
+      operationId: "scheduling.read_one_schedule"
+      tags:
+        - Scheduling
+      summary: "Read one schedule"
+      parameters:
+        - $ref: "#/components/parameters/schedule_id"
+      responses:
+        "200":
+          description: "Successfully read one schedule"

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://msustudentworkrelatedlearningoffice">
+    <meta name="description" content="Student Work Related Learning Office management system">
+    <meta name="author" content="Shawn Taurai">
+    <title>Assessment Scheduling</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <link rel="icon" href="favicon.ico">
+    <!-- Adding Bootstrap for modal functionality -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+</head>
+<body>
+    <header>
+        <h1>Student Work Related Learning Tool Box</h1>
+    </header>
+    <nav>
+        <section class="navigation">
+            <a href="index.html">Home</a>
+            <a href="studentList.html">Students</a>
+            <a href="supervisorlist.html">Supervisors</a>
+            <a href="scheduling.html">Schedule Assessments</a>
+            <a href="reporting.html">Reports</a>
+        </section>
+    </nav>
+
+    <main class="table">
+        <section class="table_header">
+            <h2>Assessment Scheduling</h2>
+        </section>
+
+        <section class="table_body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Departments</th>
+                        <th>Supervisors</th>
+                        <th>Organisations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table content will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+        <button type="button" class="button" data-toggle="modal" data-target="#assessmentModal">
+            Schedule New Assessment
+        </button>
+    </main>
+
+    <!-- Modal for scheduling new assessment -->
+    <div class="modal fade" id="assessmentModal" tabindex="-1" role="dialog" aria-labelledby="assessmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assessmentModalLabel">Schedule New Assessment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="assessmentForm">
+                        <div class="form-group">
+                            <label for="assessmentDate">Date</label>
+                            <input type="date" class="form-control" id="assessmentDate" name="assessmentDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="assessmentCity">City</label>
+                            <select class="form-control" id="assessmentCity" name="assessmentCity">
+                                <!-- Options will be dynamically populated -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assessmentDepartment">Department</label>
+                            <select class="form-control" id="assessmentDepartment" name="assessmentDepartment">
+                                <!-- Options will be dynamically populated -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assessmentSupervisors">Supervisors</label>
+                            <select class="form-control" id="assessmentSupervisors" name="assessmentSupervisors"> 
+                                <!---Will dynamically populate-->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assessmentOrganisations">Organisations</label>
+                            <input type="text" class="form-control" id="assessmentOrganisations" name="assessmentOrganisations">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveAssessment">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p class="ftext">MSU WRL Project SH05</p>
+    </footer>
+
+    <!-- Scripts for Bootstrap functionality -->
+    <script src="scripts/packages/jquery.js"></script>
+    <script src="scripts/packages/cloudflare.js"></script>
+    <script src="scripts/packages/bootstrap.js"></script>
+</body>
+</html>
+

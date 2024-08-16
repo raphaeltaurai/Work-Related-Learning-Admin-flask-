@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WRL Flask Api</title>
+</head>
+<body>
+    <h1>
+        Hello, WRL!
+    </h1>
+    <ul>
+        {% for student in students %}
+        <li>
+            {{ student.fname }} {{ student.lname }} {{ student.regNo }} {{ student.DOE }} {{ student.st_email }} {{ student.phoneNo }}
+            {{ student.level }} {{ student.department }} {{ student.program }} {{ student.company }} {{ student.com_city }}
+            {{ student.com_email }} {{ student.com_phone }}
+            <ul>
+                {% for accessment in student.accessments %}
+                <a>
+                    {{ accessment.accessmentDate }} {{ accessment.acsr_fname }} {{ accessment.acsr_lname }} {{ accessment.acsr_staffID }}
+                    {{ accessment.acsr_phone }} {{ accessment.acsr_email }} {{ accessment.comment }} {{ accessment.timestamp }}
+                </a>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

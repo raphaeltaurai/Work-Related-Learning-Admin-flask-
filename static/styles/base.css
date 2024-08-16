@@ -1,0 +1,229 @@
+*{
+    margin:0;
+    padding: 1px;
+
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: navy;
+    color:antiquewhite; 
+    height: 3rem;   
+}
+
+nav { background-color: rgba(255, 230, 0, 0.753);
+    height: 2rem;
+}
+
+a {color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+/*#buttons{
+    text-align: right;
+}*/
+
+.button{
+    margin:1%;
+    padding: 1px;
+    border-radius: 0.5rem;
+    font: bold;
+    color: white;
+    height: 1.5rem; 
+    background-color: navy;
+    float: right;
+}
+
+.button:hover,
+.button:focus {
+  outline: none;
+  background: rgb(109, 108, 108);
+}
+
+body{
+    background-image: url('wrl.jpeg');
+}
+
+main{
+    min-height:100vh;
+    width:fit-content;
+    align-items: center;
+    margin:2rem;
+}
+
+main.table{
+    width: 95vw;
+    height: 90vh;
+    background-color: #fff5;
+
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+
+    overflow: hidden;
+}
+
+.table_header{
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    padding: .8rem 1rem;
+}
+
+.table_body{
+    width:95%;
+    max-height: calc(89% .8rem);
+    background-color: #fffb;
+
+    margin: .8rem auto;
+    border-radius: .6rem;
+
+    overflow: auto;
+}
+
+.table_body::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.table_body:hover::-webkit-scrollbar-thumb{
+    visibility:visible;
+}
+
+
+table{
+    width: 100%;
+    
+}
+
+table, th, td{
+    border-collapse: collapse;
+    padding: 1rem;
+}
+
+thead th{
+    position:sticky;
+    top: 0;
+    left: 0;
+    background-color: #d5d1defe;
+}
+
+tbody tr:nth-child(even){
+    background-color: #0000000b;
+}
+
+tbody tr:hover {
+    background-color: #fff;
+}
+
+.footer{
+    display: flex;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    /* Add other styles like height, width, background-color as needed */
+    color: white;
+    background-color: navy;
+    height: 3rem;
+}
+
+footer p {
+    /* Your paragraph styles here */
+    /* If you want to center the text inside the paragraph */
+    text-align: center;
+}
+
+
+/* some features are universal some are on 
+individual pages will identify the page I will make changes to each time I do */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*{
+    font-family: sans-serif;
+}
+
+body
+
+.table {
+    min-height: 100vh;
+    background-image: url('/UI/images/wrl.jpeg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.stdlist_table {
+    width: 82vw;
+    height: 90vh;
+    background-color: #fff5;
+
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+
+    overflow: hidden;
+}
+
+.table_header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    padding: .8rem 1rem;
+}
+
+.table_body {
+    width: 95%;
+    max-height: calc(89% -.8rem);
+    background-color: #fffb;
+
+    margin: .8rem auto;
+    border-radius: .6rem;
+
+    overflow: auto;
+}
+
+.stdlist_table::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.stdlist_table::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.stdlist_table:hover::-webkit-scrollbar-thumb{
+    visibility:visible;
+
+}
+
+table{
+    width:100%;
+}
+
+table, td, th{
+    padding: 1rem;
+}

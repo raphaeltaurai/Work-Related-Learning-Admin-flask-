@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://msustudentworkrelatedlearningoffice">
+    <meta name="description" content="Student Work Related Learning Office management system">
+    <meta name="author" content="Shawn Taurai">
+    <title>Student List</title>
+    <link rel="stylesheet" href="/static/styles/normalize.css">
+    <link rel="stylesheet" href="/static/styles/base.css">
+    <link rel="stylesheet" href="/static/styles/large.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="/static/styles/bootstrap.css">
+</head>
+<body>
+    <header>
+        <h1>Student Work Related Learning Tool Box</h1>
+    </header>
+    <nav>
+        <section class="navigation">
+            <a href="studentList.html">Home</a>
+            <a href="scheduling.html">Schedule Assessments</a>
+        </section>
+    </nav>
+    <main class="table">
+        <section id="buttons">
+            <a href="scheduling.html"><button class="button">Schedule Assessments</button></a>
+        </section>
+        <section class="table_header">
+            <h2>Students On Work Related Learning List</h2>
+        </section>
+        <section class="table_body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Status</th>
+                        <th>Student Name</th>
+                        <th>Registration Number</th>
+                        <th>Program</th>
+                        <th>Department</th>
+                        <th>Level</th>
+                        <th>Company</th>
+                        <th>City</th>
+                        <th>Date of Engagement</th>
+                        <th>Company Phone</th>
+                        <th>Company Email</th>
+                        <th>Student Email</th>
+                        <th>Student Phone</th>
+                        <th>Date of Accessment</th>
+                        <th>Accessor Name</th>
+                        <th>Staff ID</th>
+                        <th>Assessor Email</th>
+                        <th>Assessor Phone</th>
+                        <th>Time Stamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ student.accessments[0].comment if student.accessments else '' }}</td>
+                        <td>{{ student.fname }} {{ student.lname }}</td>
+                        <td>{{ student.regNo }}</td>
+                        <td>{{ student.program }}</td>
+                        <td>{{ student.department }}</td>
+                        <td>{{ student.level }}</td>
+                        <td>{{ student.company }}</td>
+                        <td>{{ student.com_city }}</td>
+                        <td>{{ student.DOE }}</td>
+                        <td>{{ student.com_phone }}</td>
+                        <td>{{ student.com_email }}</td>
+                        <td>{{ student.st_email }}</td>
+                        <td>{{ student.phoneNo }}</td>
+                        <td>{{ student.accessments[0].acsmntDate if student.accessments else '' }}</td>
+                        <td>{{ student.accessments[0].acsr_fname if student.accessments else '' }} {{ student.accessments[0].acsr_lname if student.accessments else '' }}</td>
+                        <td>{{ student.accessments[0].acsr_staffID if student.accessments else '' }}</td>
+                        <td>{{ student.accessments[0].acsr_email if student.accessments else '' }}</td>
+                        <td>{{ student.accessments[0].acsr_phone if student.accessments else '' }}</td>
+                        <td>{{ student.accessments[0].timestamp if student.accessments else '' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="ftext">MSU WRL Project SH05</p>
+    </footer>
+
+    <script src="/static/scripts/packages/jquery.js"></script>
+    <script src="/static/scripts/packages/cloudflare.js"></script>
+    <script src="/static/scripts/packages/bootstrap.js"></script>
+    <script src="/static/scripts/custom/common.js"></script>
+
+</body>
+</html>
