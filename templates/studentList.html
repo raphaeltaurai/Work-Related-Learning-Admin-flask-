@@ -7,9 +7,7 @@
     <meta name="description" content="Student Work Related Learning Office management system">
     <meta name="author" content="Shawn Taurai">
     <title>Student List</title>
-    <link rel="stylesheet" href="/static/styles/normalize.css">
     <link rel="stylesheet" href="/static/styles/base.css">
-    <link rel="stylesheet" href="/static/styles/large.css">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="/static/styles/bootstrap.css">
 </head>
@@ -35,7 +33,6 @@
                 <thead>
                     <tr>
                         <th>Number</th>
-                        <th>Status</th>
                         <th>Student Name</th>
                         <th>Registration Number</th>
                         <th>Program</th>
@@ -60,7 +57,6 @@
                     {% for student in students %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ student.accessments[0].comment if student.accessments else '' }}</td>
                         <td>{{ student.fname }} {{ student.lname }}</td>
                         <td>{{ student.regNo }}</td>
                         <td>{{ student.program }}</td>
@@ -93,6 +89,5 @@
     <script src="/static/scripts/packages/cloudflare.js"></script>
     <script src="/static/scripts/packages/bootstrap.js"></script>
     <script src="/static/scripts/custom/common.js"></script>
-
 </body>
 </html>
