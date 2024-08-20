@@ -38,7 +38,7 @@ class Student(db.Model):
     program = db.Column(db.String(252))
     company = db.Column(db.String(86))
     com_city = db.Column(db.String(32))
-    com_email = db.Column(db.String(32))
+    com_email = db.Column(db.String)
     com_phone = db.Column(db.String(32))
 
     accessments = db.relationship(

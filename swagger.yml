@@ -262,3 +262,13 @@ paths:
       responses:
         "200":
           description: "Successfully read one schedule"
+    delete:
+      tags:
+        - Scheduling
+      operationId: "scheduling.delete_schedule"
+      summary: "Delete a schedule"
+      parameters:
+        - $ref: "#/components/parameters/schedule_id"
+      responses:
+        "204":
+          description: "Successfully deleted schedule"

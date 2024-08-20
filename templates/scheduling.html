@@ -1,61 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://msustudentworkrelatedlearningoffice">
-    <meta name="description" content="Student Work Related Learning Office management system">
-    <meta name="author" content="Shawn Taurai">
-    <title>Assessment Scheduling</title>
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/large.css">
-    <link rel="icon" href="favicon.ico">
-    <!-- Adding Bootstrap for modal functionality -->
-    <link rel="stylesheet" href="styles/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Scheduling</title>
+    <link rel="stylesheet" href="/static/styles/scheduling.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <header>
-        <h1>Student Work Related Learning Tool Box</h1>
+        <h1>Assessment Scheduling</h1>
     </header>
     <nav>
-        <section class="navigation">
-            <a href="index.html">Home</a>
-            <a href="studentList.html">Students</a>
-            <a href="supervisorlist.html">Supervisors</a>
-            <a href="scheduling.html">Schedule Assessments</a>
-            <a href="reporting.html">Reports</a>
-        </section>
+        <a href="/">Home</a>
+        <a href="/scheduling.html">Schedule Assessments</a>
     </nav>
-
     <main class="table">
-        <section class="table_header">
-            <h2>Assessment Scheduling</h2>
+        <section id="buttons">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#assessmentModal">Schedule New Assessment</button>
         </section>
-
         <section class="table_body">
             <table>
                 <thead>
                     <tr>
+                        <th>Number</th>
                         <th>Date</th>
                         <th>City</th>
-                        <th>Departments</th>
-                        <th>Supervisors</th>
-                        <th>Organisations</th>
+                        <th>Transport</th>
+                        <th>Students</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table content will be dynamically added here -->
+                    {% for schedule in schedules %}
+                    <tr>
+                        <td>{{ schedule.id }}</td>
+                        <td>{{ schedule.schdl_date }}</td>
+                        <td>{{ schedule.schdle_city }}</td>
+                        <td>{{ schedule.transport }}</td>
+                        <td>{{ schedule.studentlist }}</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
-        <button type="button" class="button" data-toggle="modal" data-target="#assessmentModal">
-            Schedule New Assessment
-        </button>
     </main>
 
-    <!-- Modal for scheduling new assessment -->
+    <!-- Modal -->
     <div class="modal fade" id="assessmentModal" tabindex="-1" role="dialog" aria-labelledby="assessmentModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -66,51 +55,76 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="assessmentForm">
+                    <form id="assessmentForm" method="POST" action="/scheduling.html">
                         <div class="form-group">
                             <label for="assessmentDate">Date</label>
-                            <input type="date" class="form-control" id="assessmentDate" name="assessmentDate">
+                            <input type="date" class="form-control" id="assessmentDate" name="assessmentDate" required>
                         </div>
                         <div class="form-group">
                             <label for="assessmentCity">City</label>
-                            <select class="form-control" id="assessmentCity" name="assessmentCity">
-                                <!-- Options will be dynamically populated -->
+                            <select class="form-control" id="assessmentCity" name="assessmentCity" required>
+                                <option value="" disabled selected>Select City</option>
+                                <option value="Harare">Harare</option>
+                                <option value="Bulawayo">Bulawayo</option>
+                                <option value="Chitungwiza">Chitungwiza</option>
+                                <option value="Mutare">Mutare</option>
+                                <option value="Gweru">Gweru</option>
+                                <option value="Kwekwe">Kwekwe</option>
+                                <option value="Kadoma">Kadoma</option>
+                                <option value="Masvingo">Masvingo</option>
+                                <option value="Chinhoyi">Chinhoyi</option>
+                                <option value="Marondera">Marondera</option>
+                                <option value="Norton">Norton</option>
+                                <option value="Chegutu">Chegutu</option>
+                                <option value="Zvishavane">Zvishavane</option>
+                                <option value="Bindura">Bindura</option>
+                                <option value="Beitbridge">Beitbridge</option>
+                                <option value="Ruwa">Ruwa</option>
+                                <option value="Victoria Falls">Victoria Falls</option>
+                                <option value="Redcliff">Redcliff</option>
+                                <option value="Kariba">Kariba</option>
+                                <option value="Hwange">Hwange</option>
+                                <option value="Rusape">Rusape</option>
+                                <option value="Shurugwi">Shurugwi</option>
+                                <option value="Chipinge">Chipinge</option>
+                                <option value="Gokwe">Gokwe</option>
+                                <option value="Epworth">Epworth</option>
+                                <option value="Gwanda">Gwanda</option>
+                                <option value="Mutoko">Mutoko</option>
+                                <option value="Plumtree">Plumtree</option>
+                                <option value="Murehwa">Murehwa</option>
+                                <option value="Mvurwi">Mvurwi</option>
+                                <option value="Tsholotsho">Tsholotsho</option>
+                                <option value="Nyanga">Nyanga</option>
+                                <option value="Chiredzi">Chiredzi</option>
+                                <option value="Mhangura">Mhangura</option>
+                                <option value="Macheke">Macheke</option>
+                                <option value="Karoi">Karoi</option>
+                                <option value="Filabusi">Filabusi</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="assessmentDepartment">Department</label>
-                            <select class="form-control" id="assessmentDepartment" name="assessmentDepartment">
-                                <!-- Options will be dynamically populated -->
+                            <label for="assessmentTransport">Transport</label>
+                            <select class="form-control" id="assessmentTransport" name="assessmentTransport" required>
+                                <option value="" disabled selected>Select Transport</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Mini Bus">Mini Bus</option>
+                                <option value="Coaster">Coaster</option>
+                                <option value="Double Cab">Double Cab</option>
+                                <option value="Basic Four Door">Basic Four Door</option>
+                                <option value="Personal Vehicle">Personal Vehicle</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="assessmentSupervisors">Supervisors</label>
-                            <select class="form-control" id="assessmentSupervisors" name="assessmentSupervisors"> 
-                                <!---Will dynamically populate-->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="assessmentOrganisations">Organisations</label>
-                            <input type="text" class="form-control" id="assessmentOrganisations" name="assessmentOrganisations">
-                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="saveAssessment">Save</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <p class="ftext">MSU WRL Project SH05</p>
-    </footer>
-
-    <!-- Scripts for Bootstrap functionality -->
-    <script src="scripts/packages/jquery.js"></script>
-    <script src="scripts/packages/cloudflare.js"></script>
-    <script src="scripts/packages/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

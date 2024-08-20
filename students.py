@@ -14,7 +14,8 @@ def create(student):
 
     if existing_student is None:
         new_student = student_schema.load(student, session=db.session)
-        new_student.DOE = datetime.strptime(new_student.DOE, "%Y-%m-%d").date()  # Convert DOE to date object
+        if isinstance(new_student.DOE, str):
+            new_student.DOE = datetime.strptime(new_student.DOE, "%Y-%m-%d").date()
         db.session.add(new_student)
         db.session.commit()
         return student_schema.dump(new_student), 201
