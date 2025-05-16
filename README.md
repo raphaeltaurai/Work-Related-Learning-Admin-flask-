@@ -16,6 +16,6 @@ If you are interested in the full, secure, and well-designed program, or would l
 * **WhatsApp:** [Send a message](https://wa.me/263780995944)
 * **Email:** [Send an email](mailto:shawntaurai@gmail.com)
 
-You can contact me via WhatsApp at `+263780995944` or email at `shawntaurai@Gmail.com`.
+You can contact me via WhatsApp at `+263780995944` or email at `shawntaurai@gmail.com`.
 
 ## Note
